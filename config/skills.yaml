@@ -1,0 +1,66 @@
+skills:
+  idea-refinement:
+    version: 0.1.0
+    strategy: adapt
+    runtime: local
+    source: https://github.com/addyosmani/agent-skills/tree/main/skills/idea-refine
+    approval_gate: business_owner
+  requirements-elicitation:
+    version: 0.1.0
+    strategy: adapt
+    runtime: local
+    source: https://github.com/mthines/agent-skills/tree/main/skills/analysis/interview
+    approval_gate: business_analyst
+  requirement-writing:
+    version: 0.1.0
+    strategy: adapt
+    runtime: stub
+    source: https://github.com/devfolorunso/business-analyst-agent-skill
+    approval_gate: business_analyst
+  requirement-linting:
+    version: 0.1.0
+    strategy: build
+    runtime: local
+    approval_gate: business_analyst
+  banking-business-rules:
+    version: 0.1.0
+    strategy: build
+    runtime: stub
+    approval_gate: business_owner
+  banking-nfr-analysis:
+    version: 0.1.0
+    strategy: build
+    runtime: stub
+    approval_gate: security_risk_architecture
+  banking-data-requirements:
+    version: 0.1.0
+    strategy: build
+    runtime: stub
+    approval_gate: data_owner
+  regulatory-obligation-extraction:
+    version: 0.1.0
+    strategy: build
+    runtime: stub
+    approval_gate: compliance_legal
+  regulatory-traceability:
+    version: 0.1.0
+    strategy: build
+    runtime: stub
+    approval_gate: compliance
+  acceptance-criteria:
+    version: 0.1.0
+    strategy: reuse
+    runtime: stub
+    source: https://github.com/deanpeters/Product-Manager-Skills/tree/main/skills/user-story
+    approval_gate: qa_business_analyst
+  traceability:
+    version: 0.1.0
+    strategy: build
+    runtime: stub
+    approval_gate: business_analyst
+  impact-analysis:
+    version: 0.1.0
+    strategy: build
+    runtime: stub
+    approval_gate: change_owner
+

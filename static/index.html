@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banking Requirements Accelerator</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Requirements Workbench</p>
+      <h1>Analiza inicjatywy bankowej</h1>
+      <p class="lead">Opisz potrzebę biznesową i wymagania. System przeprowadzi pipeline analizy oraz wskaże braki, ryzyka i wymagane akceptacje.</p>
+    </div>
+    <span class="badge">MVP 0.2</span>
+  </header>
+
+  <main>
+    <form id="analysis-form">
+      <section class="panel">
+        <div class="section-heading">
+          <span>1</span>
+          <div><h2>Inicjatywa</h2><p>Pola oznaczone * są wymagane.</p></div>
+        </div>
+        <div class="grid two">
+          <label>Nazwa inicjatywy *<input id="title" required placeholder="Np. Samoobsługowa zmiana limitu przelewów"></label>
+          <label>Pipeline<select id="pipeline"><option value="mvp">MVP — pełna analiza</option></select></label>
+        </div>
+        <label>Problem biznesowy *<textarea id="problem" required rows="3" placeholder="Jaki problem rozwiązujemy i kogo on dotyczy?"></textarea></label>
+        <label>Oczekiwany rezultat *<textarea id="outcome" required rows="3" placeholder="Jaki mierzalny rezultat chcemy osiągnąć?"></textarea></label>
+        <div class="grid two">
+          <label>Źródła <small>jedno w wierszu</small><textarea id="sources" rows="4" placeholder="Notatka z warsztatu&#10;Polityka banku"></textarea></label>
+          <label>Interesariusze <small>jeden w wierszu</small><textarea id="stakeholders" rows="4" placeholder="Product Owner&#10;Operations&#10;Compliance"></textarea></label>
+        </div>
+        <label>Ograniczenia <small>jedno w wierszu</small><textarea id="constraints" rows="3" placeholder="Silne uwierzytelnienie&#10;Pełny ślad audytowy"></textarea></label>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading row-heading">
+          <div class="heading-copy"><span>2</span><div><h2>Wymagania wejściowe</h2><p>Opcjonalne. Możesz rozpocząć od samej inicjatywy.</p></div></div>
+          <button type="button" id="add-requirement" class="secondary">+ Dodaj wymaganie</button>
+        </div>
+        <div id="requirements" class="requirements"></div>
+        <div id="empty-state" class="empty">Nie dodano jeszcze wymagań.</div>
+      </section>
+
+      <div class="actions">
+        <button type="reset" class="ghost">Wyczyść</button>
+        <button type="submit" class="primary" id="submit-button">Uruchom analizę</button>
+      </div>
+    </form>
+
+    <section id="results" class="panel results" hidden aria-live="polite">
+      <div class="section-heading">
+        <span>3</span>
+        <div><h2>Wynik analizy</h2><p id="run-summary"></p></div>
+      </div>
+      <div id="steps"></div>
+    </section>
+  </main>
+
+  <template id="requirement-template">
+    <article class="requirement-card">
+      <div class="card-title"><h3>Wymaganie</h3><button type="button" class="remove" aria-label="Usuń wymaganie">Usuń</button></div>
+      <div class="grid three">
+        <label>ID<input data-field="id" placeholder="BR-PAY-001"></label>
+        <label>Typ<select data-field="type"><option value="business">Biznesowe</option><option value="stakeholder">Interesariusza</option><option value="functional">Funkcjonalne</option><option value="nfr">NFR</option><option value="data">Dane</option></select></label>
+        <label>Właściciel<input data-field="owner" placeholder="Payments"></label>
+      </div>
+      <label>Treść wymagania *<textarea data-field="statement" rows="3" placeholder="Bank umożliwia klientowi…"></textarea></label>
+      <div class="grid two">
+        <label>Uzasadnienie<textarea data-field="rationale" rows="2"></textarea></label>
+        <label>Źródła <small>jedno w wierszu</small><textarea data-field="source_refs" rows="2"></textarea></label>
+      </div>
+    </article>
+  </template>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+pipelines:
+  mvp:
+    - idea-refinement
+    - requirements-elicitation
+    - requirement-writing
+    - requirement-linting
+    - regulatory-traceability
+    - traceability
+
